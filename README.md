@@ -33,6 +33,7 @@ Included in this repo is the following example json file.
   "arrayofkeys" : [ { "key1" : "val1" },{ "key2" : "val2" } ] ,
   "keysofarray" : {  "keyarr1" : [1,2,3] , "keyarr2" : [4,5,6] },
   "keyof2darray" : { "keyarr2d" : [ [11,12],[21,22] ]}
+}
 ```
 
 To understand the methodology for how this could be represented in CMake, this is just best explained with the output below:
