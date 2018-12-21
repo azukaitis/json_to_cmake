@@ -1,12 +1,12 @@
 # json_to_cmake
-# Python tool to convert python to cmake variables
+# Python tool to convert JSON data into cmake variables
 usage: json_to_cmake.py [-h] [--output OUTPUT] [--name NAME] [--delim DELIM]
                         jsonfile
 ```
 usage: json_to_cmake.py [-h] [--output OUTPUT] [--name NAME] [--delim DELIM]
                         jsonfile
 
-Flatten a json file into single name value pairs for use with CMake.
+Flatten a JSON file into single name value pairs for use with CMake.
 
 positional arguments:
   jsonfile         Name of json file to flatten
@@ -22,7 +22,7 @@ optional arguments:
 
 This follows the example [https://towardsdatascience.com/flattening-json-objects-in-python-f5343c794b10] but we needed other variables to store the available indicies and subvalues.  The output is intended to be written to a file and used by a CMake include command.
 
-# Example Json file
+# Example JSON file
 Included in this repo is the following example json file.
 ```json
 {
