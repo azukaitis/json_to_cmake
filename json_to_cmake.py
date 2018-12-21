@@ -28,8 +28,8 @@ def flatten_json(y,namespace="json",delim="."):
 parser = argparse.ArgumentParser(description="Flatten a json file into single name value pairs for use with CMake.")
 parser.add_argument("jsonfile", help="Name of json file to flatten",type=str)
 parser.add_argument("--output", help="Name of output file to write to",type=str)
-parser.add_argument("--name", help="Namespace to use for json variables",type=str,default="json")
-parser.add_argument("--delim", help="Delimiter to use for namespace separation",type=str,default=".")
+parser.add_argument("--name",   help="Namespace to use for json variables (default: %(default)s)",type=str,default="json")
+parser.add_argument("--delim",  help="Delimiter to use for namespace separation (default: %(default)s)",type=str,default=".")
 args=parser.parse_args()
 
 with open(args.jsonfile,'r') as json_file:
