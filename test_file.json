@@ -1,0 +1,9 @@
+{
+  "1darray" : [ 1,2,3,4,5 ],
+  "2darray" : [ [11,12,13 ],
+		[21,22,23 ],
+                [31,32,33 ] ],
+  "arrayofkeys" : [ { "key1" : "val1" },{ "key2" : "val2" } ] ,
+  "keysofarray" : {  "keyarr1" : [1,2,3] , "keyarr2" : [4,5,6] },
+  "keyof2darray" : { "keyarr2d" : [ [11,12],[21,22] ]}
+}
