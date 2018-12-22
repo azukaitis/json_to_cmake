@@ -87,9 +87,31 @@ set( json.keyof2darray.keyarr2d 0 1 )
 
 The example script CMakeExample.cmake shows the usage of the json_to_cmake.py tool.
 
+CMakeExample.cmake
+```CMake
+execute_process(COMMAND ./json_to_cmake.py test_file.json --output example.cmake
+                OUTPUT_VARIABLE output
+                RESULT_VARIABLE result )
+
+unset(output)
+
+if( result )
+  message(FATAL_ERROR "cmake_to_json.py failed! ${result}" )
+endif()
+
+include(example.cmake)
+
+get_cmake_property(_variableNames VARIABLES)
+list (SORT _variableNames)
+foreach (_variableName ${_variableNames})
+    if( _variableName MATCHES "^json" )
+       message(STATUS "${_variableName}=${${_variableName}}")
+    endif()
+endforeach()
+```
 executing the following command:
 ```bash
-cmake -P CmakeExample.cmake
+cmake -P CMakeExample.cmake
 ```
 Gives the following output
 ```
