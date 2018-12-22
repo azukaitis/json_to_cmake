@@ -5,7 +5,6 @@ import pprint
 import argparse
 
 def flatten_json(y,namespace="json",delim="."):
-        name=namespace+delim
 	out={}
 	def flatten(x, name='',delim=delim):
 		if type(x) is dict:
