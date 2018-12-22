@@ -82,3 +82,57 @@ set( json.arrayofkeys.0.key1 val1 )
 set( json.keyof2darray.keyarr2d.1.1 22 )
 set( json.keyof2darray.keyarr2d 0 1 )
 ```
+
+# CMake usage example
+
+The example script CMakeExample.cmake shows the usage of the json_to_cmake.py tool.
+
+executing the following command:
+```bash
+cmake -P CmakeExample.cmake
+```
+Gives the following output
+```
+-- json=keysofarray;2darray;keyof2darray;1darray;arrayofkeys
+-- json.1darray=0;1;2;3;4
+-- json.1darray.0=1
+-- json.1darray.1=2
+-- json.1darray.2=3
+-- json.1darray.3=4
+-- json.1darray.4=5
+-- json.2darray=0;1;2
+-- json.2darray.0=0;1;2
+-- json.2darray.0.0=11
+-- json.2darray.0.1=12
+-- json.2darray.0.2=13
+-- json.2darray.1=0;1;2
+-- json.2darray.1.0=21
+-- json.2darray.1.1=22
+-- json.2darray.1.2=23
+-- json.2darray.2=0;1;2
+-- json.2darray.2.0=31
+-- json.2darray.2.1=32
+-- json.2darray.2.2=33
+-- json.arrayofkeys=0;1
+-- json.arrayofkeys.0=key1
+-- json.arrayofkeys.0.key1=val1
+-- json.arrayofkeys.1=key2
+-- json.arrayofkeys.1.key2=val2
+-- json.keyof2darray=keyarr2d
+-- json.keyof2darray.keyarr2d=0;1
+-- json.keyof2darray.keyarr2d.0=0;1
+-- json.keyof2darray.keyarr2d.0.0=11
+-- json.keyof2darray.keyarr2d.0.1=12
+-- json.keyof2darray.keyarr2d.1=0;1
+-- json.keyof2darray.keyarr2d.1.0=21
+-- json.keyof2darray.keyarr2d.1.1=22
+-- json.keysofarray=keyarr1;keyarr2
+-- json.keysofarray.keyarr1=0;1;2
+-- json.keysofarray.keyarr1.0=1
+-- json.keysofarray.keyarr1.1=2
+-- json.keysofarray.keyarr1.2=3
+-- json.keysofarray.keyarr2=0;1;2
+-- json.keysofarray.keyarr2.0=4
+-- json.keysofarray.keyarr2.1=5
+-- json.keysofarray.keyarr2.2=6
+```
