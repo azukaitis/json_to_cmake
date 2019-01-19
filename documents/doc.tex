@@ -1,0 +1,63 @@
+\documentclass[12pt]{article}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{attachfile}
+\begin{document}
+
+\section{Introduction}
+
+As part of the conversion of the MCNP build system to CMake, a tool was needed to generate CMake variables
+from JSON formatted data structure.  The system was first implemented using the JSON to CMake parser \cite{jsoncmake} which with some slight modifications provided data useful for the MCNP CTest testing system.  Upon further evaluation, we found it to be slow when setting up the $1600$ tests during the CMake configuration step.  Not only was it slow, it did not validate the JSON files during configuration allowing for unexpected behaviour.   
+
+Upon some web searching we came across a simple recurrsive python example that would provide the same capability needed by our testing system\cite{flatten}.  This python example was effectively wrapped into a single python script that was used to convert the json data into cmake variables.
+
+This tool is attatched as json\_to\_cmake.py and is listed in the appendix.  In essence, the tool provides single variables for each value defined within the json file. The name for the variable is constructed by the full address specification to that variable itself.
+
+\section{Simple Examples}
+For example, take the following json object containing a single name/value pair:
+\begin{lstlisting}[language=java,basicstyle=\tiny,frame=single]
+{ mykey : myvalue }
+\end{lstlisting}
+
+Using the name json as the name of the json object, would define the following cmake variables
+\begin{lstlisting}[language=bash,basicstyle=\tiny,frame=single]
+set( json mykey   ) 
+set( json.myvalue )
+\end{lstlisting}
+the first variable json being a CMake list of values defined at the current object/array level of the variable in question.
+Next we will define an array example:
+\begin{lstlisting}[language=java,basicstyle=\tiny,frame=single]
+{ myarray : [ val1, val2, val3 ] }
+\end{lstlisting}
+would define the following cmake variables
+\begin{lstlisting}[language=bash,basicstyle=\tiny,frame=single]
+set( json myarray   ) 
+set( json.myarray 0 1 2 )
+set( json.myarray.0 val1 ) 
+set( json.myarray.1 val2 ) 
+set( json.myarray.2 val3 ) 
+\end{lstlisting}
+
+\section{Complex Example}
+Using an example file:
+\lstinputlisting[language=java,basicstyle=\tiny,frame=single]{test_file.json}
+Produces the following CMake variables:
+\lstinputlisting[language=java,basicstyle=\tiny,frame=single]{test_file.cmake}
+\newpage
+\section{Usage}
+Usage of the tool is:
+\lstinputlisting[language=bash,basicstyle=\tiny,frame=single]{json_to_cmake.usage}
+\newpage
+\appendix
+\newpage
+\section{Appendix}
+\lstinputlisting[language=python,basicstyle=\tiny,frame=single]{json_to_cmake.py}
+\attachfile{json_to_cmake.py.txt}
+
+\begin{thebibliography}{9}
+	\bibitem{json} \url{http://json.org/}
+\bibitem{jsoncmake} \url{https://github.com/sbellus/json-cmake}
+	\bibitem{flatten} \url{https://towardsdatascience.com/flattening-json-objects-in-python-f5343c794b10}
+\end{thebibliography}
+
+\end{document}

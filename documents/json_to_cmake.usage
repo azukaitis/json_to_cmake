@@ -1,0 +1,13 @@
+usage: json_to_cmake.py [-h] [--output OUTPUT] [--name NAME] [--delim DELIM]
+                        jsonfile
+
+Flatten a json file into single name value pairs for use with CMake.
+
+positional arguments:
+  jsonfile         Name of json file to flatten
+
+optional arguments:
+  -h, --help       show this help message and exit
+  --output OUTPUT  Name of output file to write to
+  --name NAME      Namespace to use for json variables (default: json)
+  --delim DELIM    Delimiter to use for namespace separation (default: .)
