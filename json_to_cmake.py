@@ -24,11 +24,16 @@ def flatten_json(y,namespace="json",delim="."):
 	flatten(y,name=namespace+delim)
 	return out
 
-parser = argparse.ArgumentParser(description="Flatten a json file into single name value pairs for use with CMake.")
-parser.add_argument("jsonfile", help="Name of json file to flatten",type=str)
-parser.add_argument("--output", help="Name of output file to write to",type=str)
-parser.add_argument("--name",   help="Namespace to use for json variables (default: %(default)s)",type=str,default="json")
-parser.add_argument("--delim",  help="Delimiter to use for namespace separation (default: %(default)s)",type=str,default=".")
+parser = argparse.ArgumentParser(\
+        description="Flatten a json file into single name value pairs for use with CMake.")
+parser.add_argument("jsonfile",\
+        help="Name of json file to flatten",type=str)
+parser.add_argument("--output",\
+        help="Name of output file to write to",type=str)
+parser.add_argument("--name",\
+        help="Namespace to use for json variables (default: %(default)s)",type=str,default="json")
+parser.add_argument("--delim",\
+        help="Delimiter to use for namespace separation (default: %(default)s)",type=str,default=".")
 args=parser.parse_args()
 
 with open(args.jsonfile,'r') as json_file:
@@ -37,7 +42,7 @@ with open(args.jsonfile,'r') as json_file:
 	if( args.output ) : 
 		f1=open(args.output,"w")
 	for key in flat:
-		if type(flat[key]) is list:
+		if isinstance(flat[key],list):
 			output=" ".join(str(x) for x in flat[key])
 		else:
 			output=str(flat[key])
