@@ -2,16 +2,25 @@
 \usepackage{url}
 \usepackage{listings}
 \usepackage{attachfile}
+\usepackage{textcomp}
+\title{A JSON to CMake tool}
+\author{ Anthony J.\ Zukaitis, David A.\ Dixon, and Austin P.\ McCartney \\
+         XCP-3 Monte Carlo Codes and Applications \\
+	 Los Alamos National Laboratory }
+
+\date{today}
+
 \begin{document}
+\maketitle
 
 \section{Introduction}
 
-As part of the conversion of the MCNP build system to CMake, a tool was needed to generate CMake variables
+As part of the conversion of the MCNP\textregistered testing system to CTest\cite{mcnpctest}, a tool was needed to generate CMake variables
 from JSON formatted data structure.  The system was first implemented using the JSON to CMake parser \cite{jsoncmake} which with some slight modifications provided data useful for the MCNP CTest testing system.  Upon further evaluation, we found it to be slow when setting up the $1600$ tests during the CMake configuration step.  Not only was it slow, it did not validate the JSON files during configuration allowing for unexpected behavior.   
 
 Upon some web searching we came across a simple recursive python example that would provide the same capability needed by our testing system\cite{flatten}.  This python example was effectively wrapped into a single python script that was used to convert the JSON data into CMake variables.
 
-This tool is attached as json\_to\_cmake.py and is listed in the appendix.  In essence, the tool provides single variables for each value defined within the JSON file. The name for the variable is constructed by the full address specification to that variable itself.
+This tool is attached as json\_to\_cmake.py and is listed in the appendix.  In essence, the tool provides single variables for each value defined within the JSON file. The name for the variable is constructed by using the associated object names and array indicies needed to deference the variable itself.  In the following sections, examples are provided to better describe how this is done.
 
 \section{Simple Examples}
 For example, take the following JSON object containing a single name/value pair:
@@ -55,6 +64,7 @@ Usage of the tool is:
 \attachfile{json_to_cmake.py.txt}
 
 \begin{thebibliography}{9}
+		\bibitem{mcnpctest} Completion of CTest Support in the MCNP\textregistered Code Base. Los Alamos National Laboratory Memo XCP-3:16-030
 	\bibitem{json} \url{http://json.org/}
 \bibitem{jsoncmake} \url{https://github.com/sbellus/json-cmake}
 	\bibitem{flatten} \url{https://towardsdatascience.com/flattening-json-objects-in-python-f5343c794b10}
