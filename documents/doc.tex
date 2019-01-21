@@ -15,22 +15,22 @@ This tool is attatched as json\_to\_cmake.py and is listed in the appendix.  In 
 
 \section{Simple Examples}
 For example, take the following json object containing a single name/value pair:
-\begin{lstlisting}[language=java,basicstyle=\tiny,frame=single]
+\begin{lstlisting}[language=java,basicstyle=\tiny,frame=single,columns=fullflexible]
 { mykey : myvalue }
 \end{lstlisting}
 
 Using the name json as the name of the json object, would define the following cmake variables
-\begin{lstlisting}[language=bash,basicstyle=\tiny,frame=single]
+\begin{lstlisting}[language=bash,basicstyle=\tiny,frame=single,columns=fullflexible]
 set( json mykey   ) 
 set( json.myvalue )
 \end{lstlisting}
 the first variable json being a CMake list of values defined at the current object/array level of the variable in question.
 Next we will define an array example:
-\begin{lstlisting}[language=java,basicstyle=\tiny,frame=single]
+\begin{lstlisting}[language=java,basicstyle=\tiny,frame=single,columns=fullflexible]
 { myarray : [ val1, val2, val3 ] }
 \end{lstlisting}
 would define the following cmake variables
-\begin{lstlisting}[language=bash,basicstyle=\tiny,frame=single]
+\begin{lstlisting}[language=java,basicstyle=\tiny,frame=single,columns=fullflexible]
 set( json myarray   ) 
 set( json.myarray 0 1 2 )
 set( json.myarray.0 val1 ) 
@@ -40,18 +40,18 @@ set( json.myarray.2 val3 )
 
 \section{Complex Example}
 Using an example file:
-\lstinputlisting[language=java,basicstyle=\tiny,frame=single]{test_file.json}
+\lstinputlisting[language=java,basicstyle=\tiny,frame=single,columns=fullflexible]{test_file.json}
 Produces the following CMake variables:
-\lstinputlisting[language=java,basicstyle=\tiny,frame=single]{test_file.cmake}
+\lstinputlisting[language=java,basicstyle=\tiny,frame=single,columns=fullflexible]{test_file.cmake}
 \newpage
 \section{Usage}
 Usage of the tool is:
-\lstinputlisting[language=bash,basicstyle=\tiny,frame=single]{json_to_cmake.usage}
+\lstinputlisting[language={},basicstyle=\tiny,frame=single,columns=fullflexible]{json_to_cmake.usage}
 \newpage
 \appendix
 \newpage
 \section{Appendix}
-\lstinputlisting[language=python,basicstyle=\tiny,frame=single]{json_to_cmake.py}
+\lstinputlisting[language=python,basicstyle=\tiny,frame=single,columns=fullflexible,showstringspaces=false]{json_to_cmake.py}
 \attachfile{json_to_cmake.py.txt}
 
 \begin{thebibliography}{9}
