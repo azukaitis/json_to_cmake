@@ -7,12 +7,12 @@ import argparse
 def flatten_json(y,namespace="json",delim="."):
 	out={}
 	def flatten(x, name='',delim=delim):
-		if type(x) is dict:
+		if isinstance(x,dict):
 			for a in x:
 				flatten(x[a], name + a + delim)
 			out[name[:-len(delim)]]=list(x.keys())
 
-		elif type(x) is list:
+		elif isinstance(x,list):
 			i=0
 			for a in x:
 				flatten(a, name + str(i) + delim)
