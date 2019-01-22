@@ -24,22 +24,22 @@ This tool is attached as json\_to\_cmake.py and is listed in the appendix.  In e
 
 \section{Simple Examples}
 For example, take the following JSON object containing a single name/value pair:
-\begin{lstlisting}[language=java,basicstyle=\tiny,frame=single,columns=fullflexible]
+\begin{lstlisting}[language=java,basicstyle=\small,frame=single,columns=fullflexible]
 { mykey : myvalue }
 \end{lstlisting}
 
 Using the name json as the name of the JSON object, would define the following CMake variables
-\begin{lstlisting}[language=bash,basicstyle=\tiny,frame=single,columns=fullflexible]
+\begin{lstlisting}[language=bash,basicstyle=\small,frame=single,columns=fullflexible]
 set( json mykey   ) 
 set( json.myvalue )
 \end{lstlisting}
 the first variable json being a CMake list of values defined at the current object/array level of the variable in question.
 Next we will define an array example:
-\begin{lstlisting}[language=java,basicstyle=\tiny,frame=single,columns=fullflexible]
+\begin{lstlisting}[language=java,basicstyle=\small,frame=single,columns=fullflexible]
 { myarray : [ val1, val2, val3 ] }
 \end{lstlisting}
 would define the following CMake variables
-\begin{lstlisting}[language=java,basicstyle=\tiny,frame=single,columns=fullflexible]
+\begin{lstlisting}[language=java,basicstyle=\small,frame=single,columns=fullflexible]
 set( json myarray   ) 
 set( json.myarray 0 1 2 )
 set( json.myarray.0 val1 ) 
@@ -49,10 +49,9 @@ set( json.myarray.2 val3 )
 
 \section{Complex Example}
 Using an example file:
-\lstinputlisting[language=java,basicstyle=\tiny,frame=single,columns=fullflexible]{test_file.json}
+\lstinputlisting[language=java,basicstyle=\small,frame=single,columns=fullflexible]{test_file.json}
 Produces the following CMake variables:
-\lstinputlisting[language=java,basicstyle=\tiny,frame=single,columns=fullflexible]{test_file.cmake}
-\newpage
+\lstinputlisting[language=java,basicstyle=\small,frame=single,columns=fullflexible]{test_file.cmake}
 \section{Usage}
 Usage of the tool is:
 \lstinputlisting[language={},basicstyle=\tiny,frame=single,columns=fullflexible]{json_to_cmake.usage}
@@ -62,7 +61,7 @@ Usage of the tool is:
 \section{Appendix}
 \lstinputlisting[language=python,basicstyle=\tiny,frame=single,columns=fullflexible,showstringspaces=false]{json_to_cmake.py}
 \attachfile{json_to_cmake.py.txt}
-
+\rule{\linewidth}{1pt}
 \begin{thebibliography}{9}
 		\bibitem{mcnpctest} Completion of CTest Support in the MCNP\textregistered Code Base. Los Alamos National Laboratory Memo XCP-3:16-030
 	\bibitem{json} \url{http://json.org/}
